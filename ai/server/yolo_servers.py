@@ -5,7 +5,7 @@ from ultralytics import YOLO
 from flask_socketio import SocketIO
 
 app = Flask(__name__)
-socketio = SocketIO(app, cors_allowed_origins="*")  # Allow frontend connection
+socketio = SocketIO(app, cors_allowed_origins="https://safecrowd.vercel.app")  # Allow frontend connection
 
 # Load YOLO model
 model = YOLO("yolov8x.pt")  # Use a more powerful model
