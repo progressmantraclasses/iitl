@@ -7,7 +7,7 @@ require("dotenv").config();
 
 const app = express();
 // ✅ Allow frontend (localhost:3000) to access backend (localhost:5000)
-app.use(cors({ origin: "*" }));
+app.use(cors({ origin: "https://safecrowd.vercel.app" }));
 app.use(express.json());
 app.use("/uploads", express.static("uploads"));
 
