@@ -8,7 +8,7 @@ app = Flask(__name__)
 socketio = SocketIO(app, cors_allowed_origins="https://safecrowd.vercel.app")  # Allow frontend connection
 
 # Load YOLO model
-model = YOLO("yolov8x.pt")  # Use a more powerful model
+model = YOLO("yolov8n.pt")  # Use YOLOv8 Nano (lighter model)
 
 @app.route("/detect", methods=["POST"])
 def detect_objects():
