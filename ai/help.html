@@ -1,0 +1,157 @@
+<!DOCTYPE html><html lang="en"><head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Emergency Help Center</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet"/>
+    <link href="https://ai-public.creatie.ai/gen_page/tailwind-custom.css" rel="stylesheet"/>
+    <script src="https://cdn.tailwindcss.com/3.4.5?plugins=forms@0.5.7,typography@0.5.13,aspect-ratio@0.4.2,container-queries@0.1.1"></script>
+    <script src="https://ai-public.creatie.ai/gen_page/tailwind-config.min.js" data-color="#000000" data-border-radius="small"></script>
+</head>
+<body class="bg-gray-50 min-h-screen">
+    <header class="bg-custom shadow-lg sticky top-0 z-50">
+        <div class="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center">
+                    <img src="https://ai-public.creatie.ai/gen_page/logo_placeholder.png" alt="Logo" class="h-8 w-auto"/>
+                    <h1 class="ml-4 text-2xl font-bold text-white">Emergency Help Center</h1>
+                </div>
+                <div class="flex items-center">
+                    <i class="fas fa-phone-alt text-white mr-2"></i>
+                    <span class="text-white font-bold">24/7 Emergency: 911</span>
+                </div>
+            </div>
+        </div>
+    </header>
+    <main class="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            <div class="space-y-8">
+                <div class="text-center">
+                    <button class="!rounded-button bg-custom hover:bg-red-700 text-white font-bold py-6 px-12 text-2xl w-full shadow-lg transform transition hover:scale-105" onclick="triggerEmergency()">
+                        <i class="fas fa-exclamation-triangle mr-2"></i>
+                        SOS EMERGENCY
+                    </button>
+                </div>
+                <div class="bg-white rounded-lg shadow-lg p-6">
+                    <h2 class="text-xl font-semibold mb-4">Quick Emergency Contacts</h2>
+                    <div class="grid grid-cols-2 gap-4">
+                        <button class="!rounded-button flex items-center justify-center bg-blue-600 hover:bg-blue-700 text-white p-4">
+                            <i class="fas fa-shield-alt mr-2"></i>
+                            Police
+                        </button>
+                        <button class="!rounded-button flex items-center justify-center bg-green-600 hover:bg-green-700 text-white p-4">
+                            <i class="fas fa-ambulance mr-2"></i>
+                            Ambulance
+                        </button>
+                        <button class="!rounded-button flex items-center justify-center bg-red-600 hover:bg-red-700 text-white p-4">
+                            <i class="fas fa-fire-extinguisher mr-2"></i>
+                            Fire Dept
+                        </button>
+                        <button class="!rounded-button flex items-center justify-center bg-yellow-600 hover:bg-yellow-700 text-white p-4">
+                            <i class="fas fa-phone mr-2"></i>
+                            Helpline
+                        </button>
+                    </div>
+                </div>
+                <div class="bg-white rounded-lg shadow-lg p-6">
+                    <h2 class="text-xl font-semibold mb-4">Report Emergency</h2>
+                    <form class="space-y-4" onsubmit="submitEmergency(event)">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700">Contact Number</label>
+                            <input type="tel" class="!rounded-button mt-1 block w-full border-gray-300" required=""/>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700">Emergency Type</label>
+                            <select class="!rounded-button mt-1 block w-full border-gray-300" required="">
+                                <option>Medical Emergency</option>
+                                <option>Fire Emergency</option>
+                                <option>Security Threat</option>
+                                <option>Natural Disaster</option>
+                                <option>Other</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700">Description</label>
+                            <textarea class="!rounded-button mt-1 block w-full border-gray-300" rows="3" required=""></textarea>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700">Upload Image/Video</label>
+                            <input type="file" accept="image/*,video/*" class="!rounded-button mt-1 block w-full border-gray-300"/>
+                        </div>
+                        <button type="submit" class="!rounded-button w-full bg-custom hover:bg-red-700 text-white font-bold py-2 px-4">
+                            Submit Report
+                        </button>
+                    </form>
+                </div>
+            </div>
+            <div class="space-y-8">
+                <div class="bg-white rounded-lg shadow-lg p-6 h-96">
+                    <h2 class="text-xl font-semibold mb-4">Your Location</h2>
+                    <div class="relative h-full">
+                        <img src="https://ai-public.creatie.ai/gen_page/map_placeholder_1280x720.png" alt="Map" class="absolute inset-0 w-full h-full object-cover rounded-lg"/>
+                        <button class="!rounded-button absolute bottom-4 right-4 bg-custom hover:bg-red-700 text-white font-bold py-2 px-4">
+                            <i class="fas fa-share-location mr-2"></i>
+                            Share Location
+                        </button>
+                    </div>
+                </div>
+                <div class="bg-white rounded-lg shadow-lg p-6">
+                    <h2 class="text-xl font-semibold mb-4">Emergency Instructions</h2>
+                    <div class="space-y-4">
+                        <div class="border rounded-lg p-4">
+                            <h3 class="font-medium text-lg mb-2">Medical Emergency</h3>
+                            <ul class="list-disc list-inside text-gray-600">
+                                <li>Check for breathing and consciousness</li>
+                                <li>Call emergency services immediately</li>
+                                <li>Perform CPR if trained</li>
+                                <li>Keep the person warm and comfortable</li>
+                            </ul>
+                        </div>
+                        <div class="border rounded-lg p-4">
+                            <h3 class="font-medium text-lg mb-2">Fire Emergency</h3>
+                            <ul class="list-disc list-inside text-gray-600">
+                                <li>Evacuate the building immediately</li>
+                                <li>Call fire department</li>
+                                <li>Do not use elevators</li>
+                                <li>Stay low to avoid smoke inhalation</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-white rounded-lg shadow-lg p-6">
+                    <h2 class="text-xl font-semibold mb-4">Help Status</h2>
+                    <div class="space-y-4">
+                        <div class="flex items-center justify-between">
+                            <span class="text-gray-600">Request Status:</span>
+                            <span class="text-green-600 font-medium">Help is on the way</span>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <span class="text-gray-600">ETA:</span>
+                            <span class="text-green-600 font-medium">5 minutes</span>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <span class="text-gray-600">Connected Contacts:</span>
+                            <span class="text-green-600 font-medium">2 Active</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <script>
+        function triggerEmergency() {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition((position) => {
+                    const location = {
+                        lat: position.coords.latitude,
+                        lng: position.coords.longitude
+                    };
+                    alert('Emergency alert sent with your location!');
+                });
+            }
+        }
+        function submitEmergency(event) {
+            event.preventDefault();
+            alert('Emergency report submitted successfully!');
+        }
+    </script>
