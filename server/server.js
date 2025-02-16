@@ -11,11 +11,8 @@ app.use(cors({ origin: "https://safecrowd.vercel.app" }));
 app.use(express.json());
 app.use("/uploads", express.static("uploads"));
 
-// Connect to MongoDB
-mongoose.connect(process.env.MONGO_URI, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-}).then(() => console.log("MongoDB Connected"))
+  mongoose.connect(process.env.MONGO_URI)
+  .then(() => console.log("MongoDB Connected"))
   .catch(err => console.log(err));
 
 const emergencySchema = new mongoose.Schema({
@@ -51,6 +48,27 @@ app.post("/api/emergency", upload.single("file"), async (req, res) => {
     res.status(500).json({ error: "Error saving data" });
   }
 });
+
+// Get All Emergency Reports
+app.get('/api/emergency', async (req, res) => {
+  try {
+    const reports = await Emergency.find().sort({ timestamp: -1 });
+    res.json(reports);
+  } catch (error) {
+    res.status(500).json({ error: "Failed to fetch reports" });
+  }
+});
+
+// Delete Emergency Report
+app.delete('/api/emergency/:id', async (req, res) => {
+  try {
+    await Emergency.findByIdAndDelete(req.params.id);
+    res.json({ message: "Report deleted successfully" });
+  } catch (error) {
+    res.status(500).json({ error: "Failed to delete report" });
+  }
+});
+
 
 
 const EmergencyReportSchema = new mongoose.Schema({
